@@ -33,7 +33,7 @@
                         android:id="@+id/tv_AppTitle"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Fucker"
+                        android:text="Job Fin'der"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="25sp"
