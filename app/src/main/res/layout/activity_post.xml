@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <ImageView
+        android:id="@+id/pm_Avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:src="@drawable/profile"/>
+    <TextView
+        android:id="@+id/pm_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Long"
+        android:textSize="28sp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/pm_Avatar"/>
+    <TextView
+        android:id="@+id/pm_Date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="26/05/2024"
+        android:textSize="24sp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintTop_toBottomOf="@id/pm_Name"
+        app:layout_constraintLeft_toRightOf="@id/pm_Avatar"/>
+    <TextView
+        android:id="@+id/pm_Description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tuyen dung nhan vien lam viec ban thoi gian"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/pm_Avatar"/>
+    <ImageView
+        android:id="@+id/pm_Image"
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:background="@color/blue"
+        app:layout_constraintTop_toBottomOf="@id/pm_Description"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
