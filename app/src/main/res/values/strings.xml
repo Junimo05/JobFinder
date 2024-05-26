@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Job Finder</string>
+    <string name="search_job">Search Job...</string>
+</resources>
