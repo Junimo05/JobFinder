@@ -20,54 +20,25 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/black"
+                android:background="@color/white"
                 android:orientation="vertical"
                 android:padding="16dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/avatar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/profile"
-                        tools:ignore="MissingConstraints" />
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="4dp">
 
                     <TextView
-                        android:id="@+id/lb_welcome"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:text="Welcome back"
-                        android:textColor="@color/white"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toEndOf="@+id/avatar"
-                        app:layout_constraintTop_toTopOf="@+id/avatar" />
-
-                    <TextView
-                        android:id="@+id/tv_username"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="Tuan Fat"
-                        android:textColor="@color/white"
+                        android:id="@+id/tv_AppTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Fucker"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
                         android:textSize="25sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/avatar"
-                        app:layout_constraintStart_toEndOf="@+id/avatar"
-                        app:layout_constraintTop_toBottomOf="@+id/lb_welcome" />
-
-                    <ImageView
-                        android:id="@+id/btn_Notification"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintBottom_toBottomOf="@+id/avatar"
-                        app:layout_constraintTop_toTopOf="@+id/avatar"
-                        app:srcCompat="@drawable/bell"
-                        tools:ignore="MissingConstraints"
-                        tools:layout_editor_absoluteX="341dp" />
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="10dp" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -112,7 +83,7 @@
                     xmlns:tools="http://schemas.android.com/tools"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black"
+                    android:background="@android:color/white"
                     android:orientation="vertical"
                     android:padding="16dp"
                     tools:context=".MainActivity">
@@ -131,7 +102,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Categories"
-                            android:textColor="#ECE1E1"
+                            android:textColor="@android:color/black"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
@@ -294,7 +265,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:background="@android:color/white">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -302,6 +274,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
+                        android:padding="16dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -310,7 +283,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Popular"
-                            android:textColor="#ECE0E0"
+                            android:textColor="@android:color/black"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
@@ -326,7 +299,8 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerView"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:padding="16dp"
                         android:scrollbars="horizontal" />
                 </LinearLayout>
             </LinearLayout>
@@ -335,7 +309,7 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="65dp"
         app:layout_constraintBottom_toBottomOf="@+id/ScrollView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -343,10 +317,10 @@
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/app_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:baselineAligned="false"
-            app:backgroundTint="@color/black"
+            app:backgroundTint="@color/white"
             app:fabCradleMargin="8dp"
             app:fabCradleRoundedCornerRadius="50dp"
             app:fabCradleVerticalOffset="6dp">
@@ -365,21 +339,15 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView5"
+                        android:id="@+id/icon_home"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="center"
                         android:layout_margin="5dp"
                         android:src="@drawable/bottom_btn1"
-                        app:tint="@color/orange" />
+                         />
 
-                    <TextView
-                        android:id="@+id/textView12"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Home"
-                        android:textAlignment="center"
-                        android:textColor="@color/white" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -390,21 +358,15 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView6"
+                        android:id="@+id/icon_profile"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="center"
                         android:layout_margin="5dp"
                         android:src="@drawable/bottom_btn2"
-                        app:tint="@color/orange" />
+                        />
 
-                    <TextView
-                        android:id="@+id/textView13"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="CV"
-                        android:textAlignment="center"
-                        android:textColor="@color/white" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -415,21 +377,15 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView7"
+                        android:id="@+id/icon_Notes"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="center"
                         android:layout_margin="5dp"
-                        android:src="@drawable/bottom_btn3"
-                        app:tint="@color/orange" />
+                        android:src="@drawable/black_notes"
+                        />
 
-                    <TextView
-                        android:id="@+id/textView14"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Favourite"
-                        android:textAlignment="center"
-                        android:textColor="@color/white" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -440,22 +396,35 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView8"
+                        android:id="@+id/icon_notification"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/bell"
+                        app:tint="@color/black" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.25"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/icon_settings"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="center"
                         android:layout_margin="5dp"
                         android:src="@drawable/bottom_btn4"
-                        app:tint="@color/orange" />
+                        />
 
-                    <TextView
-                        android:id="@+id/textView15"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Setting"
-                        android:textAlignment="center"
-                        android:textColor="@color/white" />
+
                 </LinearLayout>
+
             </LinearLayout>
         </com.google.android.material.bottomappbar.BottomAppBar>
 
