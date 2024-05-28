@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.jobfinder.main_screen_fragments.AccountFragment;
 import com.example.jobfinder.main_screen_fragments.HomeFragment;
+import com.example.jobfinder.main_screen_fragments.NotificationFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.navigation_notes_ver2:
                             return true;
                         case R.id.navigation_notifications_ver2:
+                            NotificationFragment fragment2 = new NotificationFragment();
+                            FragmentTransaction transaction2 = fragmentManager.beginTransaction();
+                            transaction2.replace(R.id.fragment_container, fragment2);
+                            transaction2.commit();
                             return true;
                         case R.id.navigation_settings_ver2:
                             return true;
