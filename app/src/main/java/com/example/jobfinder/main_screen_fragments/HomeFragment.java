@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,15 +17,22 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.jobfinder.PostDetailActivity;
-import com.example.jobfinder.SearchActivity;
+import com.example.jobfinder.MyApplication;
+import com.example.jobfinder.data.api.ApiInterface;
+import com.example.jobfinder.data.model.Job;
+
 import com.example.jobfinder.databinding.FragmentHomeBinding;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import com.example.jobfinder.adapter.PostAdapter;
 import com.example.jobfinder.model.Post;
+
+import retrofit2.Call;
 
 public class HomeFragment extends Fragment implements LifecycleObserver {
     private ArrayList<Post> arrayList = new ArrayList<>();
@@ -98,17 +106,46 @@ public class HomeFragment extends Fragment implements LifecycleObserver {
     }
 
     private void preparePostData() {
-        arrayList = new ArrayList<>();
-        Post post = new Post("Nhan vien giao hang", "25/5/2024", "Nhan vien giao hang ban thoi gian", "7 - 10m", "Ko yeu cau kinh nghiem");
-        arrayList.add(post);
-        post = new Post("Nhan vien tap vu", "23/4/2024", "Nhan vien tap vu toan thoi gian", "12 - 15m", "Ko yeu cau kinh nghiem");
-        arrayList.add(post);
-        post = new Post("Nhan vien kinh doanh/ Sales", "13/4/2024", "Nhan vien kinh doanh toan thoi gian", "15 - 20m", "2 years+");
-        arrayList.add(post);
-        post = new Post("Sat Thu", "16/9/2025", "Sieu sat thu", "1 gold coin", "not dead");
-        arrayList.add(post);
-        post = new Post("Grab", "11/11/2024", "Lai xe dich vu", "7 - 10m", "Lai xe tot, thong thao duong pho");
-        arrayList.add(post);
+
+        //getData from API
+        ApiInterface apiService = MyApplication.getRetrofitInstance().create(ApiInterface.class);
+        try {
+            Call<List<Job>> call = apiService.getJobs();
+            call.enqueue(new retrofit2.Callback<List<Job>>() {
+                @Override
+                public void onResponse(Call<List<Job>> call, retrofit2.Response<List<Job>> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        List<Job> jobs = response.body();
+//                        Log.e("preparePostData", "response.size=" + jobs.size());
+//                        Log.e("preparePostData", "response=" + jobs.get(0).getJobTitle());
+                        for (Job job : jobs) {
+                            try {
+                                String isoDate = job.getPostDate();
+                                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+                                Date date = simpleDateFormat.parse(isoDate);
+                                SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
+                                String postDate = simpleDateFormat2.format(date);
+                                job.setPostDate(postDate);  //set postDate to display in the app
+                                Post post = new Post(job.getJobTitle(), job.getPostDate(), job.getDescription(), job.getSalaryRange(), job.getRequirements());
+                                arrayList.add(post);
+                            } catch (Exception ex) {
+                                Log.e("ErrorAPI JobList", ex.getMessage());
+                            }
+                        }
+                        postAdapter.notifyDataSetChanged();
+                        postAdapter2.notifyDataSetChanged();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<Job>> call, Throwable t) {
+                    Log.e("preparePostData", t.getMessage());
+                }
+            });
+        } catch (Exception ex) {
+            Log.e("preparePostData", ex.getMessage());
+        }
+
         postAdapter = new PostAdapter(getContext(), arrayList, new PostAdapter.MyClickListener() {
             @Override
             public void onItemClick(int position) {
@@ -118,7 +155,7 @@ public class HomeFragment extends Fragment implements LifecycleObserver {
 
             @Override
             public void onItemHold(int position) {
-                Snackbar mySnackbar = Snackbar.make(binding.TopLayout, "Are you sure you want to delete this movie?", Snackbar.LENGTH_SHORT);
+                Snackbar mySnackbar = Snackbar.make(binding.TopLayout, "", Snackbar.LENGTH_SHORT);
                 mySnackbar.setAction("Confirm", v -> {
                     Post deletedPost = arrayList.remove(position);
                     postAdapter.notifyItemRemoved(position);

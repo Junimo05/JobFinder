@@ -34,9 +34,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
         Post post = arrayList.get(position);
         holder.JobTitle.setText(post.getJobTitle());
         holder.PostDate.setText(post.getPostDate());
-        holder.Description.setText(post.getDescription());
         holder.SalaryRange.setText(post.getSalaryRange());
-        holder.Requirements.setText(post.getRequirements());
 //        Picasso.get()
 //                .load(item.getImages().get(0))
 //                .into(holder.image);
@@ -44,7 +42,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
     @Override
     public int getItemCount() {
         if(arrayList != null && arrayList.size() > 0) {
-            return arrayList.size();
+            return 3;
         }
         else
             return 0;
@@ -56,9 +54,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
             super(itemView);
             JobTitle = itemView.findViewById(R.id.post_Title);
             PostDate = itemView.findViewById(R.id.post_Date);
-            Description = itemView.findViewById(R.id.post_Des);
             SalaryRange = itemView.findViewById(R.id.post_SalaryHolder);
-            Requirements = itemView.findViewById(R.id.post_ExpHolder);
             itemView.setOnClickListener(v -> {
                 myClickListener.onItemClick(getAdapterPosition());
             });
