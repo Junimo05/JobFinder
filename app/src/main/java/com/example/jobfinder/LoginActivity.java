@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
             if (loginUser.getUsername().equals("admin") && loginUser.getPassword().equals("admin")) {
                 // Navigate to main activity
             } else {
-                // Show error message
+
             }
 
         });
