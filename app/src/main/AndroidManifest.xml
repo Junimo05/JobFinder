@@ -16,19 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JobFinder"
         tools:targetApi="31">
-        <activity
-            android:name=".jobpage"
-            android:exported="false" />
-        <activity
-            android:name=".CategoryFullActivity"
-            android:exported="false" />
-        <activity
-            android:name=".confirmedPassword"
-            android:exported="false" />
-        <activity
-            android:name=".forgot_password"
-            android:exported="false"
-            android:theme="@style/Theme.JobFinder" />
+
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustPan"
