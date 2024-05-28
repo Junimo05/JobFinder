@@ -3,36 +3,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="8dp"
-    android:paddingHorizontal="16dp">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/search_Box"
+    android:paddingTop="8dp">
+    <LinearLayout
+        android:id="@+id/Search_TopBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gray_400"
-        android:paddingLeft="8dp"
-        android:paddingVertical="4dp"
         app:layout_constraintTop_toTopOf="parent">
         <ImageView
-            android:id="@+id/search_icon"
-            android:layout_width="wrap_content"
+            android:id="@+id/Search_Back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+
+            android:src="@mipmap/search_back_foreground"/>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/search_icon"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"/>
-        <TextView
-            android:id="@+id/search_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Find Jobs..."
-            android:textSize="16sp"
-            android:layout_marginLeft="8dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/search_icon"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/border">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/search_icon"
+                android:layout_marginHorizontal="4dp"/>
+            <EditText
+                android:id="@+id/Search_EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:hint="Địa điểm - Công ty - Vị trí - Ngành nghề"
+/>
+        </LinearLayout>
+
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ListSearchItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/search_Box"/>
+        android:paddingHorizontal="8dp"
+        app:layout_constraintTop_toBottomOf="@id/Search_TopBar"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
