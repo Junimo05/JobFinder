@@ -1,6 +1,7 @@
 package com.example.jobfinder.main_screen_fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +16,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.jobfinder.PostDetailActivity;
+import com.example.jobfinder.SearchActivity;
 import com.example.jobfinder.databinding.FragmentHomeBinding;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -39,6 +42,7 @@ public class HomeFragment extends Fragment implements LifecycleObserver {
 //        return view;
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         preparePostData();
+
         return binding.getRoot();
 
     }
@@ -58,7 +62,17 @@ public class HomeFragment extends Fragment implements LifecycleObserver {
                 }
             });
 
-
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        binding.txtSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     @Override
     public void onDestroyView() {
@@ -123,8 +137,13 @@ public class HomeFragment extends Fragment implements LifecycleObserver {
         postAdapter2 = new PostAdapter(getContext(), arrayList, new PostAdapter.MyClickListener() {
             @Override
             public void onItemClick(int position) {
-                Toast.makeText(getActivity().getApplicationContext(), arrayList.get(position).getJobTitle(), Toast.LENGTH_SHORT).show();
-                Log.e("position_Top", String.valueOf(binding.FMScrollView.getScrollY()));
+//                Toast.makeText(getActivity().getApplicationContext(), arrayList.get(position).getJobTitle(), Toast.LENGTH_SHORT).show();
+//                Log.e("position_Top", String.valueOf(binding.FMScrollView.getScrollY()));
+                Intent intent = new Intent(getContext(), PostDetailActivity.class);
+//                intent.putExtra("Salary", arrayList.get(position).getSalaryRange());
+//                intent.putExtra("Experience", arrayList.get(position).getRequirements());
+//                intent.putExtra("Description", arrayList.get(position).getDescription());
+                startActivity(intent);
             }
 
             @Override
