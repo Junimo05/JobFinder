@@ -7,27 +7,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleObserver;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.jobfinder.R;
 import com.example.jobfinder.databinding.FragmentHomeBinding;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
-import adapter.PostAdapter;
-import model.Post;
-import viewmodel.MyScrollPosition;
+import com.example.jobfinder.adapter.PostAdapter;
+import com.example.jobfinder.model.Post;
 
 public class HomeFragment extends Fragment implements LifecycleObserver {
     private ArrayList<Post> arrayList = new ArrayList<>();
