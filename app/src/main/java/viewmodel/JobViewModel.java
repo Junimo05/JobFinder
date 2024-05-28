@@ -38,6 +38,8 @@ public class JobViewModel extends ViewModel {
         }
         return jobListByGroup;
     }
+
+
     @Override
     protected void onCleared() {
         super.onCleared();
