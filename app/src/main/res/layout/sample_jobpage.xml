@@ -9,7 +9,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
-
         <!-- Job Info -->
         <TextView
             android:id="@+id/job_title"

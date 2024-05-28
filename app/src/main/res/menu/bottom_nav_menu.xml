@@ -11,13 +11,13 @@
         android:title=""
         />
     <item
-        android:id="@+id/navigation_notifications_ver2"
-        android:icon="@drawable/bell"
+        android:id="@+id/navigation_notes_ver2"
+        android:icon="@drawable/black_notes"
         android:title=""
         />
     <item
-        android:id="@+id/navigation_notes_ver2"
-        android:icon="@drawable/icon_wrapper"
+        android:id="@+id/navigation_notifications_ver2"
+        android:icon="@drawable/bell"
         android:title=""
         />
     <item
