@@ -4,17 +4,17 @@ public class Application {
     private int appID;
     private int employeeID;
     private int jobID;
-    private String description;
+    private String Description;
     private String applyDate;
-    private String status;
+    private String Status;
 
     public Application(int appID, int employeeID, int jobID, String description, String applyDate, String status) {
         this.appID = appID;
         this.employeeID = employeeID;
         this.jobID = jobID;
-        this.description = description;
+        this.Description = description;
         this.applyDate = applyDate;
-        this.status = status;
+        this.Status = status;
     }
 
     public int getAppID() {
@@ -42,11 +42,11 @@ public class Application {
     }
 
     public String getDescription() {
-        return description;
+        return Description;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.Description = description;
     }
 
     public String getApplyDate() {
@@ -58,10 +58,10 @@ public class Application {
     }
 
     public String getStatus() {
-        return status;
+        return Status;
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        this.Status = status;
     }
 }

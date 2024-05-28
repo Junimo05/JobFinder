@@ -5,20 +5,20 @@ public class Employee {
     private int userID;
     private String name;
     private int age;
-    private String phone;
-    private String email;
-    private String aboutMe;
-    private String hobbies;
+    private String Phone;
+    private String Email;
+    private String AboutMe;
+    private String Hobbies;
 
     public Employee(int employeeID, int userID, String name, int age, String phone, String email, String aboutMe, String hobbies) {
         this.employeeID = employeeID;
         this.userID = userID;
         this.name = name;
         this.age = age;
-        this.phone = phone;
-        this.email = email;
-        this.aboutMe = aboutMe;
-        this.hobbies = hobbies;
+        this.Phone = phone;
+        this.Email = email;
+        this.AboutMe = aboutMe;
+        this.Hobbies = hobbies;
     }
 
     public int getEmployeeID() {
@@ -54,34 +54,34 @@ public class Employee {
     }
 
     public String getPhone() {
-        return phone;
+        return Phone;
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.Phone = phone;
     }
 
     public String getEmail() {
-        return email;
+        return Email;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.Email = email;
     }
 
     public String getAboutMe() {
-        return aboutMe;
+        return AboutMe;
     }
 
     public void setAboutMe(String aboutMe) {
-        this.aboutMe = aboutMe;
+        this.AboutMe = aboutMe;
     }
 
     public String getHobbies() {
-        return hobbies;
+        return Hobbies;
     }
 
     public void setHobbies(String hobbies) {
-        this.hobbies = hobbies;
+        this.Hobbies = hobbies;
     }
 }

@@ -22,14 +22,20 @@ public interface ApiInterface {
         @GET("users/forgotPassword/{email}")
         Call<User> forgotPassword();
 
-        @GET("users")
+        @GET("users/getall")
         Call<List<User>> getUsers();
 
-        @GET("users/{id}")
-        Call<User> getUserById(String id);
+        @GET("users/searchID/{id}")
+        Call<User> getUserById(@Path("id") String id);
 
-        @POST("users")
-        Call<User> createUser(@Body User user);
+        @GET("users/searchUsername/{username}")
+        Call<User> getUserByUsername(@Path("username") String username);
+
+        @POST("users/create-employee")
+        Call<User> createEmployee(@Body User user);
+
+        @POST("users/create-employer")
+        Call<User> createEmployer(@Body User user);
 
         @PATCH("users/{id}")
         Call<User> updateUser(@Path("id") String id, @Body User user);
@@ -38,11 +44,14 @@ public interface ApiInterface {
         Call<User> deleteUser(String id);
 
     //Application
-        @GET("applications")
+        @GET("applications/getall")
         Call<List<Application>> getApplications();
 
-        @GET("applications/{id}")
-        Call<Application> getApplicationById(String id);
+        @GET("applications/searchID/{id}")
+        Call<Application> getApplicationById(@Path("id") String id);
+
+        @GET("applications/searchUserID/{id}")
+        Call<Application> getApplicationByUserId(@Path("id") String id);
 
         @POST("applications")
         Call<Application> createApplication(@Body Application application);
@@ -51,73 +60,80 @@ public interface ApiInterface {
         Call<Application> updateApplication(@Path("id") String id, @Body Application application);
 
         @DELETE("applications/{id}")
-        Call<Application> deleteApplication(String id);
+        Call<Application> deleteApplication(@Path("id") String id);
 
     //Jobs
-        @GET("jobs")
+        @GET("jobs/getall")
         Call<List<Job>> getJobs();
 
-        @GET("jobs/{id}")
-        Call<Job> getJobById(String id);
+        @GET("jobs/searchID/{id}")
+        Call<Job> getJobById(@Path("id") String id);
 
-        @GET("jobs/{title}")
-        Call<Job> getJobByTitle(String title);
+        @GET("jobs/searchTitle/{title}")
+        Call<Job> getJobByTitle(@Path("title") String title);
 
-        @GET("jobs/{group}")
-        Call<Job> getJobByJobGroup(String group);
+        @GET("jobs/searchGroup/{group}")
+        Call<Job> getJobByJobGroup(@Path("group") String group);
 
-        @POST("jobs")
+        @POST("jobs/getall")
         Call<Job> createJob(@Body Job job);
 
         @PATCH("jobs/{id}")
-        Call<Job> updateJob(@Body Job job);
+        Call<Job> updateJob(@Path("id") String id, @Body Job job);
 
         @DELETE("jobs/{id}")
-        Call<Job> deleteJob(String id);
+        Call<Job> deleteJob(@Path("id") String id);
 
     //JobGroups
-        @GET("jobgroups")
+        @GET("jobgroups/getall")
         Call<List<JobGroup>> getJobGroups();
 
-        @GET("jobgroups/{id}")
-        Call<JobGroup> getJobGroupById(String id);
+        @GET("jobgroups/searchID/{id}")
+        Call<JobGroup> getJobGroupById(@Path("id") String id);
+
+        @GET("jobgroups/searchTitle/{title}")
+        Call<JobGroup> getJobGroupByTitle(@Path("title") String title);
 
         @POST("jobgroups")
         Call<JobGroup> createJobGroup(@Body JobGroup jobGroup);
 
         @PATCH("jobgroups/{id}")
-        Call<JobGroup> updateJobGroup(@Body JobGroup jobGroup);
+        Call<JobGroup> updateJobGroup(@Path("id") String id, @Body JobGroup jobGroup);
 
-        @DELETE("jobgroups/{id}")
-        Call<JobGroup> deleteJobGroup(String id);
     //Employees
-        @GET("employees")
+        @GET("employees/getall")
         Call<List<Employee>> getEmployees();
 
-        @GET("employees/{id}")
-        Call<Employee> getEmployeeById(String id);
+        @GET("employees/searchID/{id}")
+        Call<Employee> getEmployeeById(@Path("id") String id);
 
-        @POST("employees")
-        Call<Employee> createEmployee(@Body Employee employee);
+        @GET("employees/searchEmail/{email}")
+        Call<Employee> getEmployeeByEmail(@Path("email") String email);
+
+        @GET("employees/searchPhone/{phone}")
+        Call<Employee> getEmployeeByPhone(@Path("phone") String phone);
 
         @PATCH("employees/{id}")
-        Call<Employee> updateEmployee(@Body Employee employee);
+        Call<Employee> updateEmployee(@Path("id") String id, @Body Employee employee);
 
         @DELETE("employees/{id}")
-        Call<Employee> deleteEmployee(String id);
+        Call<Employee> deleteEmployee(@Path("id") String id);
 
     //Employers
-        @GET("employers")
+        @GET("employers/getall")
         Call<List<Employer>> getEmployers();
 
-        @GET("employers/{id}")
-        Call<Employer> getEmployerById(String id);
+        @GET("employers/searchID/{id}")
+        Call<Employer> getEmployerById(@Path("id") String id);
 
-        @POST("employers")
-        Call<Employer> createEmployer(@Body Employer employer);
+        @GET("employers/searchName/{CompanyName}")
+        Call<Employer> getEmployerByName(@Path("CompanyName") String CompanyName);
+
+        @GET("employers/searchJobs/{id}")
+        Call<Employer> getEmployerByJob(@Path("id") String id);
 
         @PATCH("employers/{id}")
-        Call<Employer> updateEmployer(@Body Employer employer);
+        Call<Employer> updateEmployer(@Path("id") String id, @Body Employer employer);
 
         @DELETE("employers/{id}")
         Call<Employer> deleteEmployer(String id);

@@ -50,6 +50,7 @@
                 android:inputType="textPassword"/>
 
             <Button
+                android:id="@+id/btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Đăng Nhập"
@@ -57,11 +58,11 @@
                 android:background="@color/blue"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
-                android:onClick="onLoginButtonClick"/>
+                />
         </LinearLayout>
 
         <TextView
-            android:id="@+id/forgotPasswordTextView"
+            android:id="@+id/tv_forgotPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Quên mật khẩu?"
@@ -70,7 +71,7 @@
             android:onClick="onForgotPasswordClick"/>
 
         <TextView
-            android:id="@+id/SignUpTextView"
+            android:id="@+id/tv_SignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Đăng Kí"
