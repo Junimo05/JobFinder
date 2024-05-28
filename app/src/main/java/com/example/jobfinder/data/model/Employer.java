@@ -3,17 +3,17 @@ package com.example.jobfinder.data.model;
 public class Employer {
     private int employerID;
     private int userID;
-    private String companyName;
-    private String industry;
-    private String email;
+    private String CompanyName;
+    private String Industry;
+    private String Email;
     private String phone;
 
     public Employer(int employerID, int userID, String companyName, String industry, String email, String phone) {
         this.employerID = employerID;
         this.userID = userID;
-        this.companyName = companyName;
-        this.industry = industry;
-        this.email = email;
+        this.CompanyName = companyName;
+        this.Industry = industry;
+        this.Email = email;
         this.phone = phone;
     }
 
@@ -34,27 +34,27 @@ public class Employer {
     }
 
     public String getCompanyName() {
-        return companyName;
+        return CompanyName;
     }
 
     public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+        this.CompanyName = companyName;
     }
 
     public String getIndustry() {
-        return industry;
+        return Industry;
     }
 
     public void setIndustry(String industry) {
-        this.industry = industry;
+        this.Industry = industry;
     }
 
     public String getEmail() {
-        return email;
+        return Email;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.Email = email;
     }
 
     public String getPhone() {
