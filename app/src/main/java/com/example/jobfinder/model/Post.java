@@ -8,11 +8,12 @@ public class Post {
     private String Description;
     private String SalaryRange;
     private String Requirements;
-    public Post(String JobTitle, String PostDate, String Description, String SalaryRange, String Requirements) {
+    public Post(String jobID , String JobTitle, String PostDate, String Description, String SalaryRange, String Requirements) {
+        this.jobID = jobID;
         this.JobTitle = JobTitle;
         this.PostDate = PostDate;
         this.Description = Description;
-        this. SalaryRange = SalaryRange;
+        this.SalaryRange = SalaryRange;
         this.Requirements = Requirements;
     }
     public String getJobID() {

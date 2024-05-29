@@ -18,6 +18,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jobfinder.MyApplication;
+import com.example.jobfinder.PostDetailActivity;
+import com.example.jobfinder.SearchActivity;
 import com.example.jobfinder.data.api.ApiInterface;
 import com.example.jobfinder.data.model.Job;
 
@@ -126,7 +128,10 @@ public class HomeFragment extends Fragment implements LifecycleObserver {
                                 SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
                                 String postDate = simpleDateFormat2.format(date);
                                 job.setPostDate(postDate);  //set postDate to display in the app
-                                Post post = new Post(job.getJobTitle(), job.getPostDate(), job.getDescription(), job.getSalaryRange(), job.getRequirements());
+
+                                String id = String.valueOf(job.getJobID());
+
+                                Post post = new Post(id ,job.getJobTitle(), job.getPostDate(), job.getDescription(), job.getSalaryRange(), job.getRequirements());
                                 arrayList.add(post);
                             } catch (Exception ex) {
                                 Log.e("ErrorAPI JobList", ex.getMessage());
@@ -174,12 +179,8 @@ public class HomeFragment extends Fragment implements LifecycleObserver {
         postAdapter2 = new PostAdapter(getContext(), arrayList, new PostAdapter.MyClickListener() {
             @Override
             public void onItemClick(int position) {
-//                Toast.makeText(getActivity().getApplicationContext(), arrayList.get(position).getJobTitle(), Toast.LENGTH_SHORT).show();
-//                Log.e("position_Top", String.valueOf(binding.FMScrollView.getScrollY()));
                 Intent intent = new Intent(getContext(), PostDetailActivity.class);
-//                intent.putExtra("Salary", arrayList.get(position).getSalaryRange());
-//                intent.putExtra("Experience", arrayList.get(position).getRequirements());
-//                intent.putExtra("Description", arrayList.get(position).getDescription());
+                intent.putExtra("jobID", arrayList.get(position).getJobID().toString());
                 startActivity(intent);
             }
 
