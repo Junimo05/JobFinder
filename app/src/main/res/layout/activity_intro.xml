@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActitvity">
+    >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,10 +24,11 @@
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="match_parent"
+                android:layout_width="274dp"
                 android:layout_height="274dp"
                 android:scaleType="fitXY"
-                app:srcCompat="@drawable/started"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/jerry_haha"
                 android:layout_marginBottom="50dp"
                 android:layout_marginTop="50dp"/>
 
@@ -53,7 +54,6 @@
                 android:textSize="20sp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/btn_Started"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginStart="32dp"
@@ -62,7 +62,7 @@
                 android:background="@drawable/intro_background">
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/btn_Started"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Bắt đầu"

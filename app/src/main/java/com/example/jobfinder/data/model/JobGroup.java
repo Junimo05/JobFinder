@@ -4,8 +4,9 @@ public class JobGroup {
     private int groupID;
     private String jobGroupTitle;
     private String Description;
+    private int jobCount;
 
-    public JobGroup(int groupID, String jobGroupTitle, String description) {
+    public JobGroup(int groupID, String jobGroupTitle, String description, int jobCount) {
         this.groupID = groupID;
         this.jobGroupTitle = jobGroupTitle;
         Description = description;
@@ -33,5 +34,13 @@ public class JobGroup {
 
     public void setDescription(String description) {
         Description = description;
+    }
+
+    public int getJobCount() {
+        return jobCount;
+    }
+
+    public void setJobCount(int jobCount) {
+        this.jobCount = jobCount;
     }
 }

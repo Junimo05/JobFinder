@@ -5,7 +5,11 @@ import com.example.jobfinder.data.model.Job;
 import com.example.jobfinder.data.model.JobGroup;
 import com.example.jobfinder.data.model.Application;
 import com.example.jobfinder.data.model.Employee;
+import com.example.jobfinder.data.model.LoginUser;
 import com.example.jobfinder.data.model.User;
+import com.example.jobfinder.model.EmployeeInput;
+import com.example.jobfinder.model.EmployerInput;
+
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
@@ -31,11 +35,17 @@ public interface ApiInterface {
         @GET("users/searchUsername/{username}")
         Call<User> getUserByUsername(@Path("username") String username);
 
+        @POST("users/login")
+        Call<User> Login(@Body LoginUser loginUser);
+
+        @POST("users/upload/:{id}")
+        Call<User> uploadImage(@Path("id") String id);
+
         @POST("users/create-employee")
-        Call<User> createEmployee(@Body User user);
+        Call<User> createEmployee(@Body EmployeeInput employeeInput);
 
         @POST("users/create-employer")
-        Call<User> createEmployer(@Body User user);
+        Call<User> createEmployer(@Body EmployerInput employerInput);
 
         @PATCH("users/{id}")
         Call<User> updateUser(@Path("id") String id, @Body User user);
@@ -73,7 +83,7 @@ public interface ApiInterface {
         Call<Job> getJobByTitle(@Path("title") String title);
 
         @GET("jobs/searchGroup/{group}")
-        Call<Job> getJobByJobGroup(@Path("group") String group);
+        Call<List<Job>> getJobByJobGroup(@Path("group") String group);
 
         @POST("jobs/getall")
         Call<Job> createJob(@Body Job job);
@@ -85,19 +95,19 @@ public interface ApiInterface {
         Call<Job> deleteJob(@Path("id") String id);
 
     //JobGroups
-        @GET("jobgroups/getall")
+        @GET("groups/getall")
         Call<List<JobGroup>> getJobGroups();
 
-        @GET("jobgroups/searchID/{id}")
+        @GET("groups/searchID/{id}")
         Call<JobGroup> getJobGroupById(@Path("id") String id);
 
-        @GET("jobgroups/searchTitle/{title}")
+        @GET("groups/searchTitle/{title}")
         Call<JobGroup> getJobGroupByTitle(@Path("title") String title);
 
-        @POST("jobgroups")
+        @POST("groups")
         Call<JobGroup> createJobGroup(@Body JobGroup jobGroup);
 
-        @PATCH("jobgroups/{id}")
+        @PATCH("groups/{id}")
         Call<JobGroup> updateJobGroup(@Path("id") String id, @Body JobGroup jobGroup);
 
     //Employees
