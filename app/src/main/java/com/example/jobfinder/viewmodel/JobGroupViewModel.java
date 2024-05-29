@@ -11,17 +11,23 @@ import java.util.List;
 
 public class JobGroupViewModel extends ViewModel {
 
-    private JobGroupRepo jobGroupRepo;
+    public JobGroupRepo jobGroupRepo;
     private MutableLiveData<List<JobGroup>> listJobGroups = new MutableLiveData<>();
+
+    public JobGroupViewModel(){
+        this.jobGroupRepo = new JobGroupRepo();
+    }
     public JobGroupViewModel(JobGroupRepo jobGroupRepo){
         this.jobGroupRepo = jobGroupRepo;
     }
 
+    public LiveData<List<JobGroup>> getJobGroups() {
+        return listJobGroups;
+    }
+
     public LiveData<List<JobGroup>> getJobGroupsRepository(){
         try {
-            if(listJobGroups==null){
-                listJobGroups = jobGroupRepo.requestAllJobGroups();
-            }
+            listJobGroups = jobGroupRepo.requestAllJobGroups();
         } catch (Exception ex) {
             System.out.println("User viewmodel" + ex.getMessage());
         }

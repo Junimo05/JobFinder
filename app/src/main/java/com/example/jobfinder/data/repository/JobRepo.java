@@ -40,23 +40,22 @@ public class JobRepo {
         });
         return mutableLiveData;
     }
-
-    public MutableLiveData<Job> requestJobByJobGroup(String jobGroup){
-        final MutableLiveData<Job> mutableLiveData = new MutableLiveData<>();
+    public MutableLiveData<List<Job>> requestJobByJobGroup(String jobGroup){
+        final MutableLiveData<List<Job>> mutableLiveData = new MutableLiveData<>();
 
         ApiInterface apiService = MyApplication.getRetrofitInstance().create(ApiInterface.class);
 
-        apiService.getJobByJobGroup(jobGroup).enqueue(new Callback<Job>() {
+        apiService.getJobByJobGroup(jobGroup).enqueue(new Callback<List<Job>>() {
             @Override
-            public void onResponse(Call<Job> call, Response<Job> response) {
+            public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
                 if (response.isSuccessful() && response.body()!=null ) {
-                    Log.e(TAG, "requestJobByID response="+response.body());
+                    Log.e(TAG, "requestJobByGroup response="+response.body());
                     mutableLiveData.setValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<Job> call, Throwable t) {
+            public void onFailure(Call<List<Job>> call, Throwable t) {
                 Log.e(TAG, "requestJobByID onFailure" + call.toString());
             }
         });

@@ -19,7 +19,7 @@
 
     <!-- Title -->
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/list_display_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Title"
@@ -34,7 +34,7 @@
         android:id="@+id/rv_ListItem"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/title"
+        android:layout_below="@id/list_display_title"
         android:layout_marginTop="16dp" />
 
 </RelativeLayout>
