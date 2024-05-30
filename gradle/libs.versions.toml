@@ -14,6 +14,7 @@ navigationUi = "2.7.7"
 roomCommonJvm = "2.7.0-alpha02"
 roomRuntime = "2.6.1"
 roomCompiler = "2.6.1"
+common = "0.5.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -29,6 +30,7 @@ androidx-navigation-ui = { group = "androidx.navigation", name = "navigation-ui"
 androidx-room-common-jvm = { group = "androidx.room", name = "room-common-jvm", version.ref = "roomCommonJvm" }
 androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "roomRuntime" }
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomCompiler" }
+common = { group = "com.google.ai.client.generativeai", name = "common", version.ref = "common" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

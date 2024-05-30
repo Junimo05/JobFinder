@@ -22,6 +22,8 @@
         <activity
             android:name=".view.see_all"
             android:exported="false" />
+        <activity android:name=".view.ForgotPassword"
+            android:exported="false"/>
         <activity
             android:name=".view.CategoryListJob"
             android:exported="false" />
