@@ -29,6 +29,7 @@ import com.example.jobfinder.LoginActivity;
 import com.example.jobfinder.MyApplication;
 import com.example.jobfinder.R;
 import com.example.jobfinder.data.api.ApiInterface;
+import com.example.jobfinder.data.image.ImageLoad;
 import com.example.jobfinder.data.model.User;
 import com.squareup.picasso.Picasso;
 
@@ -46,6 +47,7 @@ public class SettingsFragment extends Fragment {
 
     ApiInterface apiInterface = MyApplication.getRetrofitInstance().create(ApiInterface.class);
 
+    private ImageLoad imageLoad;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,6 +58,8 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        imageLoad = new ImageLoad(getContext(), apiInterface);
 
         //Lấy imageView từ layout
         ImageView avatar = view.findViewById(R.id.account_icon);
@@ -79,7 +83,7 @@ public class SettingsFragment extends Fragment {
         //Tiến hành đẩy lên server
         TextView uploadImage = view.findViewById(R.id.upload_image);
         uploadImage.setOnClickListener(v -> {
-            uploadImage(avatar);
+            imageLoad.uploadImage(getContext(), getActivity(), avatar, id);
         });
 
 
@@ -132,78 +136,70 @@ public class SettingsFragment extends Fragment {
     }
 
     //upload image to server
-    private void uploadImage(ImageView imageView){
-        Drawable drawable = imageView.getDrawable();
-        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
-        Uri imageUri = getImageUri(getContext(), bitmap);
-
-        // Tạo một File từ Uri
-        String filePath = getPathFromUri(imageUri);
-        if (filePath == null) {
-            // Xử lý lỗi
-            return;
-        }
-        File file = new File(filePath);
-
-        // Tạo một RequestBody từ File
-        RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
-
-        // Tạo một MultipartBody.Part từ RequestBody
-        MultipartBody.Part imagePart = MultipartBody.Part.createFormData("image", file.getName(), requestBody);
-
-        // Tạo các RequestBody khác
-        RequestBody key = RequestBody.create(MediaType.parse("text/plain"), "image");
-        RequestBody value = RequestBody.create(MediaType.parse("text/plain"), "value");
-
-        // Gọi API
-        apiInterface = MyApplication.getRetrofitInstance().create(ApiInterface.class);
-
-        Call<User> call = apiInterface.uploadImage(imagePart, key, value, "26");
-        call.enqueue(new retrofit2.Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, retrofit2.Response<User> response) {
-                if (response.isSuccessful()) {
-                    User user = response.body();
-                } else {
-                    // Xử lý lỗi
-                }
-            }
-
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                // Xử lý lỗi
-            }
-        });
-    }
-
-    //get image uri
-    private Uri getImageUri(Context context, Bitmap bitmap) {
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-        String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), bitmap, "Title", null);
-        return Uri.parse(path);
-    }
-
-    //convert to jpg
-    private Uri convertToJpg(Context context, Bitmap bitmap) {
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-        String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), bitmap, "Title", null);
-        return Uri.parse(path);
-    }
-
-    //get path from uri
-    private String getPathFromUri(Uri uri) {
-        String[] projection = { MediaStore.Images.Media.DATA };
-        Cursor cursor = getActivity().getContentResolver().query(uri, projection, null, null, null);
-        if (cursor != null) {
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            cursor.moveToFirst();
-            String path = cursor.getString(column_index);
-            cursor.close();
-            return path;
-        } else {
-            return null;
-        }
-    }
+//    private void uploadImage(ImageView imageView, String id){
+//        Drawable drawable = imageView.getDrawable();
+//        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+//        Uri imageUri = getImageUri(getContext(), bitmap);
+//
+//        // Tạo một File từ Uri
+//        String filePath = getPathFromUri(imageUri);
+//        if (filePath == null) {
+//            // Xử lý lỗi
+//            return;
+//        }
+//        File file = new File(filePath);
+//
+//        // Tạo một RequestBody từ File
+//        RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
+//
+//        // Tạo một MultipartBody.Part từ RequestBody
+//        MultipartBody.Part imagePart = MultipartBody.Part.createFormData("image", file.getName(), requestBody);
+//
+//        // Tạo các RequestBody khác
+//        RequestBody key = RequestBody.create(MediaType.parse("text/plain"), "image");
+//        RequestBody value = RequestBody.create(MediaType.parse("text/plain"), "value");
+//
+//        // Gọi API
+//        apiInterface = MyApplication.getRetrofitInstance().create(ApiInterface.class);
+//
+//        Call<User> call = apiInterface.uploadImage(imagePart, key, value, id);
+//        call.enqueue(new retrofit2.Callback<User>() {
+//            @Override
+//            public void onResponse(Call<User> call, retrofit2.Response<User> response) {
+//                if (response.isSuccessful()) {
+//                    User user = response.body();
+//                } else {
+//                    // Xử lý lỗi
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<User> call, Throwable t) {
+//                // Xử lý lỗi
+//            }
+//        });
+//    }
+//
+//    //get image uri
+//    private Uri getImageUri(Context context, Bitmap bitmap) {
+//        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+//        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+//        String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), bitmap, "Title", null);
+//        return Uri.parse(path);
+//    }
+//
+//    //get path from uri
+//    private String getPathFromUri(Uri uri) {
+//        String[] projection = { MediaStore.Images.Media.DATA };
+//        Cursor cursor = getActivity().getContentResolver().query(uri, projection, null, null, null);
+//        if (cursor != null) {
+//            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+//            cursor.moveToFirst();
+//            String path = cursor.getString(column_index);
+//            cursor.close();
+//            return path;
+//        } else {
+//            return null;
+//        }
+//    }
 }
