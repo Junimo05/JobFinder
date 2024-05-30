@@ -31,6 +31,9 @@
             android:name=".LoginActivity"
             android:exported="true" />
         <activity
+            android:name=".CreateJobActivity"
+            android:exported="true" />
+        <activity
             android:name=".CVActivity"
             android:exported="true" />
         <activity

@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.jobfinder.CreateJobActivity;
 import com.example.jobfinder.MyApplication;
 import com.example.jobfinder.PostDetailActivity;
 import com.example.jobfinder.R;
@@ -74,6 +75,7 @@ public class HomeFragment extends Fragment implements LifecycleObserver {
         super.onViewCreated(view, savedInstanceState);
 //        MyScrollListener myScrollListener = new MyScrollListener();
 //        binding.FMScrollView.setOnScrollChangeListener(myScrollListener);
+        SharedPreferences prefs2 = getActivity().getSharedPreferences("LoginInfo", Context.MODE_PRIVATE);
         binding.txtSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +84,20 @@ public class HomeFragment extends Fragment implements LifecycleObserver {
                 startActivity(intent);
             }
         });
-
+        Log.e("user_role: ", prefs2.getString("user_role", "default_value"));
+        if (prefs2.getString("user_role", "default_value").equals("Employee")){
+            Log.e("equals:", "true");
+            binding.txtAdd.setVisibility(View.INVISIBLE);
+        }
+        else {
+            binding.txtAdd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), CreateJobActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
         //Categories Click
             int[] categories = new int[]{R.id.First_CV_LL, R.id.Second_CV_LL, R.id.Third_CV_LL, R.id.Fourth_CV_LL};
             int[] titleTv = new int[]{R.id.tv_Category_1_Title, R.id.tv_Category_2_Title, R.id.tv_Category_3_Title, R.id.tv_Category_4_Title};

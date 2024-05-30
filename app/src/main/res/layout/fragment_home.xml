@@ -46,13 +46,25 @@
                         tools:layout_editor_absoluteY="10dp" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <ImageView
-                    android:id="@+id/txt_Search"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:src="@drawable/search_icon"/>
+                    android:paddingHorizontal="8dp">
+                    <ImageView
+                        android:id="@+id/txt_Search"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/search_icon"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
+                    <ImageView
+                        android:id="@+id/txt_Add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/add_job"
+                        app:layout_constraintRight_toRightOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 <!--                    <EditText-->
 <!--                        android:id="@+id/txt_Search"-->
 <!--                        android:layout_width="match_parent"-->
