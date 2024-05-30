@@ -6,7 +6,7 @@ public class Employer {
     private String CompanyName;
     private String Industry;
     private String Email;
-    private String phone;
+    private String Phone;
 
     public Employer(int employerID, int userID, String companyName, String industry, String email, String phone) {
         this.employerID = employerID;
@@ -14,7 +14,7 @@ public class Employer {
         this.CompanyName = companyName;
         this.Industry = industry;
         this.Email = email;
-        this.phone = phone;
+        this.Phone = phone;
     }
 
     public int getEmployerID() {
@@ -58,10 +58,10 @@ public class Employer {
     }
 
     public String getPhone() {
-        return phone;
+        return Phone;
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.Phone = phone;
     }
 }

@@ -29,22 +29,22 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_Companyname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Company Name"
-                    android:textColor="@android:color/black"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/tvJobTitle"
+                    android:id="@+id/tvTitleJob"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="Job Title"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tvJobSalary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Salary"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <ImageView
@@ -54,15 +54,6 @@
                 android:src="@drawable/ic_launcher_foreground">
             </ImageView>
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/tvJobLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Location"
-            android:textColor="@android:color/black"
-            android:textSize="14sp"
-            android:layout_marginBottom="8dp" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

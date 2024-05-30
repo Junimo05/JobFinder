@@ -99,7 +99,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textView8"
+                            android:id="@+id/categories"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -109,7 +109,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/textView9"
+                            android:id="@+id/categories_seeall"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="See all"
@@ -210,7 +210,7 @@
                                 app:cardBackgroundColor="#E8DAEF">
 
                                 <LinearLayout
-                                    android:id="@+id/Categories_SecondBlock_LL"
+                                    android:id="@+id/Third_CV_LL"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:orientation="vertical"
@@ -249,7 +249,7 @@
                                 app:cardBackgroundColor="#FDEBD0">
 
                                 <LinearLayout
-                                    android:id="@+id/Categories_FourthBlock_LL"
+                                    android:id="@+id/Fourth_CV_LL"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:orientation="vertical"

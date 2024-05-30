@@ -12,27 +12,31 @@ import java.util.List;
 public class JobViewModel extends ViewModel {
     private JobRepo jobRepo;
     private MutableLiveData<List<Job>> listJobs = new MutableLiveData<>();
-    private MutableLiveData<Job> jobListByGroup = new MutableLiveData<>();
+    private MutableLiveData<List<Job>> jobListByGroup = new MutableLiveData<>();
     public JobViewModel(JobRepo jobRepo){
         this.jobRepo = jobRepo;
     }
 
+    public JobViewModel(){
+        this.jobRepo = new JobRepo();
+    }
+
+    public LiveData<List<Job>> getJobListByGroup() {
+        return jobListByGroup;
+    }
+
     public LiveData<List<Job>> getJobsRepository(){
         try {
-            if(listJobs==null){
-                listJobs = jobRepo.requestAllJobs();
-            }
+            listJobs = jobRepo.requestAllJobs();
         } catch (Exception ex) {
             System.out.println("User viewmodel" + ex.getMessage());
         }
         return listJobs;
     }
 
-    public LiveData<Job> getJobByJobGroup(String jobGroup){
+    public LiveData<List<Job>> getJobByJobGroup(String jobGroup){
         try {
-            if(jobListByGroup==null){
-                jobListByGroup = jobRepo.requestJobByJobGroup(jobGroup);
-            }
+            jobListByGroup = jobRepo.requestJobByJobGroup(jobGroup);
         } catch (Exception ex) {
             System.out.println("User viewmodel" + ex.getMessage());
         }
