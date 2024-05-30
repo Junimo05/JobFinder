@@ -1,18 +1,10 @@
 package com.example.jobfinder.data.model;
 
 public class User {
-//    model User {
-//        userID   Int       @id @default(autoincrement())
-//            username String    @unique
-//            password String
-//            Employee Employee?
-//            Employer Employer?
-//    }
     private String userID;
     private String username;
     private String password;
     private String imgurl;
-
     private String role;
 
     public User(String userID, String username, String password, String imgurl, String role) {

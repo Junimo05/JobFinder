@@ -3,6 +3,8 @@ package com.example.jobfinder.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -42,9 +44,16 @@ public class CategoryListJob extends AppCompatActivity {
         setContentView(R.layout.activity_category_list_job);
         jobs = new ArrayList<>();
         TextView tvTitle = findViewById(R.id.list_display_title);
-        Log.e("CategoryListJob", "titleGroup: " + getIntent().getStringExtra("titleGroup"));
+//        Log.e("CategoryListJob", "titleGroup: " + getIntent().getStringExtra("titleGroup"));
         tvTitle.setText(getIntent().getStringExtra("titleGroup"));
 
+        ImageView back= findViewById(R.id.backButton);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         prepareData();
     }
 
@@ -68,8 +77,9 @@ public class CategoryListJob extends AppCompatActivity {
             @Override
             public void onItemClick(int position) {
                 Intent intent = new Intent(CategoryListJob.this, PostDetailActivity.class);
-                intent.putExtra("jobID", jobs.get(position).getJobID());
+                intent.putExtra("jobID", String.valueOf(jobs.get(position).getJobID()));;
                 startActivity(intent);
+
             }
             @Override
             public void onItemHold(int position) {

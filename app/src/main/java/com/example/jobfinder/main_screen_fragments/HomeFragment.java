@@ -31,6 +31,7 @@ import com.example.jobfinder.data.model.JobGroup;
 
 import com.example.jobfinder.databinding.FragmentHomeBinding;
 import com.example.jobfinder.view.CategoryListJob;
+import com.example.jobfinder.view.see_all;
 import com.example.jobfinder.viewmodel.JobGroupViewModel;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -71,38 +72,60 @@ public class HomeFragment extends Fragment implements LifecycleObserver {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        //Categories
-        int[] categories = new int[]{R.id.First_CV_LL, R.id.Second_CV_LL, R.id.Third_CV_LL, R.id.Fourth_CV_LL};
-        int[] titleTv = new int[]{R.id.tv_Category_1_Title, R.id.tv_Category_2_Title, R.id.tv_Category_3_Title, R.id.tv_Category_4_Title};
+        //Categories Click
+            int[] categories = new int[]{R.id.First_CV_LL, R.id.Second_CV_LL, R.id.Third_CV_LL, R.id.Fourth_CV_LL};
+            int[] titleTv = new int[]{R.id.tv_Category_1_Title, R.id.tv_Category_2_Title, R.id.tv_Category_3_Title, R.id.tv_Category_4_Title};
 
-        for (int i = 0; i < 4; i++) {
-            int finalI = i;
-            getView().findViewById(categories[i]).setOnClickListener(new View.OnClickListener() {
+            for (int i = 0; i < 4; i++) {
+                int finalI = i;
+                getView().findViewById(categories[i]).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        TextView titleTextView = getView().findViewById(titleTv[finalI]);
+                        String title = titleTextView.getText().toString();
+
+                        Intent intent = new Intent(getContext(), CategoryListJob.class);
+                        intent.putExtra("titleGroup", title);
+                        startActivity(intent);
+                    }
+                });
+            }
+
+            //SeeAll Click
+            TextView cateSeeAll = getView().findViewById(R.id.categories_seeall);
+            cateSeeAll.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    TextView titleTextView = getView().findViewById(titleTv[finalI]);
-                    String title = titleTextView.getText().toString();
-
-                    Intent intent = new Intent(getContext(), CategoryListJob.class);
-                    intent.putExtra("titleGroup", title);
+                    Intent intent = new Intent(getContext(), see_all.class);
+                    intent.putExtra("see_all", "job group");
                     startActivity(intent);
                 }
             });
-        }
+
 
         //Popular
-        SharedPreferences prefs = getActivity().getSharedPreferences("my_fragment_prefs", Context.MODE_PRIVATE);
-        int savedPosition = prefs.getInt("fragment_scroll_position", 0);
-        Log.e("ViewCreated_position: ", String.valueOf(savedPosition));
-            binding.FMScrollView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
-                @Override
-                public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
-                    if(savedPosition > 0) {
-                        binding.FMScrollView.scrollTo(0, savedPosition);
+            SharedPreferences prefs = getActivity().getSharedPreferences("my_fragment_prefs", Context.MODE_PRIVATE);
+            int savedPosition = prefs.getInt("fragment_scroll_position", 0);
+            Log.e("ViewCreated_position: ", String.valueOf(savedPosition));
+                binding.FMScrollView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+                    @Override
+                    public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                        if(savedPosition > 0) {
+                            binding.FMScrollView.scrollTo(0, savedPosition);
+                        }
                     }
+                });
+
+            //See All
+            TextView popularSeeAll = getView().findViewById(R.id.popular_seeall);
+            popularSeeAll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), see_all.class);
+                    intent.putExtra("see_all", "job");
+                    startActivity(intent);
                 }
             });
-
 
     }
     @Override
@@ -115,6 +138,18 @@ public class HomeFragment extends Fragment implements LifecycleObserver {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences prefs = getActivity().getSharedPreferences("LoginInfo", Context.MODE_PRIVATE);
+        String role = prefs.getString("user_role", "");
+        String username = prefs.getString("user_name", "");
+        String userID = prefs.getString("user_id", "");
+//        Log.e("HomeFragment", "username" + username + " role" + role + " userID" + userID);
+        preparePostData();
+        prepareCategories();
     }
     @Override
     public void onDestroyView() {
