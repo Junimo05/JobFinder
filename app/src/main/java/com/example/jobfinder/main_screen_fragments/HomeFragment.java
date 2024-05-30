@@ -59,7 +59,14 @@ public class HomeFragment extends Fragment implements LifecycleObserver {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        binding.txtSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("txtSearchClicked:", "true");
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
         SharedPreferences prefs = getActivity().getSharedPreferences("my_fragment_prefs", Context.MODE_PRIVATE);
         int savedPosition = prefs.getInt("fragment_scroll_position", 0);
         Log.e("ViewCreated_position: ", String.valueOf(savedPosition));
@@ -72,17 +79,6 @@ public class HomeFragment extends Fragment implements LifecycleObserver {
                 }
             });
 
-    }
-    @Override
-    public void onStart() {
-        super.onStart();
-        binding.txtSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), SearchActivity.class);
-                startActivity(intent);
-            }
-        });
     }
     @Override
     public void onDestroyView() {
