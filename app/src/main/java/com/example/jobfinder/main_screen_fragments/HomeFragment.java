@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -71,6 +72,8 @@ public class HomeFragment extends Fragment implements LifecycleObserver {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+//        MyScrollListener myScrollListener = new MyScrollListener();
+//        binding.FMScrollView.setOnScrollChangeListener(myScrollListener);
         binding.txtSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -284,4 +287,15 @@ public class HomeFragment extends Fragment implements LifecycleObserver {
 
 
     }
+//    public class MyScrollListener implements View.OnScrollChangeListener {
+//        @Override
+//        public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+//            int currentScrollY = binding.FMScrollView.getScrollY();
+//            float scrollFactor = (float) currentScrollY / (float) binding.recyclerView2.getHeight();
+//            int sibling1Offset = (int) (scrollFactor * binding.FirstLL.getHeight());
+//            binding.FirstLL.setY(sibling1Offset);
+//            int sibling2Offset = (int) (scrollFactor * binding.SecondLL.getHeight());
+//            binding.SecondLL.setY(sibling2Offset);
+//        }
+//    }
 }

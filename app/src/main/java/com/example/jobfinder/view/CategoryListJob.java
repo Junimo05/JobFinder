@@ -44,7 +44,14 @@ public class CategoryListJob extends AppCompatActivity {
         setContentView(R.layout.activity_category_list_job);
         jobs = new ArrayList<>();
         TextView tvTitle = findViewById(R.id.list_display_title);
-//        Log.e("CategoryListJob", "titleGroup: " + getIntent().getStringExtra("titleGroup"));
+        ImageView backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        Log.e("CategoryListJob", "titleGroup: " + getIntent().getStringExtra("titleGroup"));
         tvTitle.setText(getIntent().getStringExtra("titleGroup"));
 
         ImageView back= findViewById(R.id.backButton);
@@ -76,8 +83,11 @@ public class CategoryListJob extends AppCompatActivity {
         ListJobAdapter = new CategoryListJobAdapter(jobs, new CategoryListJobAdapter.MyClickListener() {
             @Override
             public void onItemClick(int position) {
+                Log.e("Data: ", String.valueOf(jobs.get(position).getJobID()));
                 Intent intent = new Intent(CategoryListJob.this, PostDetailActivity.class);
-                intent.putExtra("jobID", String.valueOf(jobs.get(position).getJobID()));;
+
+                intent.putExtra("jobID", String.valueOf(jobs.get(position).getJobID()));
+
                 startActivity(intent);
 
             }

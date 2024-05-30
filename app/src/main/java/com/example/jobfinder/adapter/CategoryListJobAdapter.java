@@ -39,7 +39,12 @@ public class CategoryListJobAdapter extends RecyclerView.Adapter<CategoryListJob
 
     @Override
     public int getItemCount() {
-        return jobs.size();
+
+        if(jobs != null && jobs.size() > 0) {
+            return jobs.size();
+        }
+        else
+            return 0;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

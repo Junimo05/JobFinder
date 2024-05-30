@@ -29,6 +29,9 @@
             android:name=".LoginActivity"
             android:exported="true" />
         <activity
+            android:name=".CVActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.RegisterActivity"
             android:exported="false" />
         <activity

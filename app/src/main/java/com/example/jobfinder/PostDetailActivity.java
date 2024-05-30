@@ -17,6 +17,7 @@ import retrofit2.Response;
 
 public class PostDetailActivity extends AppCompatActivity {
     private ActivityPostDetailBinding binding;
+    String jobName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +26,7 @@ public class PostDetailActivity extends AppCompatActivity {
         ApiInterface apiInterface = MyApplication.getRetrofitInstance().create(ApiInterface.class);
 
         binding = ActivityPostDetailBinding.inflate(getLayoutInflater());
+
 
         try {
             Call<Job> call = apiInterface.getJobById(jobID);
@@ -37,6 +39,7 @@ public class PostDetailActivity extends AppCompatActivity {
                         binding.PDLocation.setText(job.getLocation());
                         binding.PDSalary.setText(job.getSalaryRange());
                         binding.PDExperience.setText(job.getRequirements());
+                        jobName = job.getJobTitle();
                     }
                 }
                 @Override
@@ -49,12 +52,23 @@ public class PostDetailActivity extends AppCompatActivity {
         }
 
 
+
+        setContentView(binding.getRoot());
         binding.PDBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-        setContentView(binding.getRoot());
+        binding.PDApplyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), CVActivity.class);
+                Log.e("jobName:", jobName);
+                intent.putExtra("jobName", jobName);
+                intent.putExtra("jobID", jobID);
+                startActivity(intent);
+            }
+        });
     }
 }

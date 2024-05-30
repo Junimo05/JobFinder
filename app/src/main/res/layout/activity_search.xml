@@ -27,11 +27,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="16sp"
+                android:inputType="text"
                 android:background="@drawable/border"
                 android:paddingVertical="8dp"
                 android:paddingHorizontal="4dp"
                 android:layout_marginRight="4dp"
-                android:hint="Địa điểm - Công ty - Vị trí - Ngành nghề" />
+                android:hint="Tìm kiếm"
+                android:maxLines="1"
+                android:imeOptions="actionDone"/>
             <ImageView
                 android:id="@+id/Search_ClearText"
                 android:layout_width="wrap_content"
