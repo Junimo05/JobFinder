@@ -80,7 +80,7 @@ public interface ApiInterface {
         Call<Job> getJobById(@Path("id") String id);
 
         @GET("jobs/searchTitle/{title}")
-        Call<Job> getJobByTitle(@Path("title") String title);
+        Call<List<Job>> getJobByTitle(@Path("title") String title);
 
         @GET("jobs/searchGroup/{group}")
         Call<List<Job>> getJobByJobGroup(@Path("group") String group);

@@ -55,6 +55,13 @@ public class PostDetailActivity extends AppCompatActivity {
                 finish();
             }
         });
+        binding.PDApplyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), CVActivity.class);
+                startActivity(intent);
+            }
+        });
         setContentView(binding.getRoot());
     }
 }
