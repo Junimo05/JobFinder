@@ -95,9 +95,7 @@ public class Register2_Employer extends Fragment {
         binding.btnBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getFragmentManager() != null) {
-                    getFragmentManager().popBackStack();
-                }
+                getActivity().onBackPressed();
             }
         });
     }

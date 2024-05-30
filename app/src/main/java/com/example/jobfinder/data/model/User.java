@@ -14,6 +14,11 @@ public class User {
         this.imgurl = imgurl;
         this.role = role;
     }
+
+    public User(){
+
+    }
+
     public String getUserID() {
         return userID;
     }

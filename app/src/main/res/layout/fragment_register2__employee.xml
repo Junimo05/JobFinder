@@ -21,6 +21,7 @@
         android:layout_gravity="center"
         android:text="Employee"
         android:textSize="20sp"
+        android:textStyle="bold"
         android:layout_marginTop="8dp"/>
 
     <TextView

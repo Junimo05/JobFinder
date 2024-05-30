@@ -1,5 +1,7 @@
 package com.example.jobfinder.data.api;
 
+import com.example.jobfinder.data.model.ChangePassword;
+import com.example.jobfinder.data.model.CodeResponse;
 import com.example.jobfinder.data.model.Employer;
 import com.example.jobfinder.data.model.Job;
 import com.example.jobfinder.data.model.JobGroup;
@@ -10,12 +12,16 @@ import com.example.jobfinder.data.model.User;
 import com.example.jobfinder.model.EmployeeInput;
 import com.example.jobfinder.model.EmployerInput;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.Call;
+import retrofit2.http.Multipart;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 import java.util.List;
@@ -23,8 +29,18 @@ public interface ApiInterface {
 
     //Users
 
-        @GET("users/forgotPassword/{email}")
-        Call<User> forgotPassword();
+        //uploadImage
+        @Multipart
+        @POST("users/upload/{idUser}")
+        Call<User> uploadImage(
+                @Part MultipartBody.Part image,
+                @Part("key") RequestBody key,
+                @Part("value") RequestBody value,
+                @Path("idUser") String idUser
+        );
+
+        @POST("users/forgotPassword/{email}")
+        Call<CodeResponse> forgotPassword(@Path("email") String email);
 
         @GET("users/getall")
         Call<List<User>> getUsers();
@@ -48,7 +64,7 @@ public interface ApiInterface {
         Call<User> createEmployer(@Body EmployerInput employerInput);
 
         @PATCH("users/{id}")
-        Call<User> updateUser(@Path("id") String id, @Body User user);
+        Call<User> updateUser(@Path("id") String id, @Body ChangePassword user);
 
         @DELETE("users/{id}")
         Call<User> deleteUser(String id);

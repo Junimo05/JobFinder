@@ -44,10 +44,11 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-
+    implementation ("androidx.preference:preference:1.1.1")
     //loadimage
     implementation ("com.github.bumptech.glide:compose:1.0.0-beta01")
     implementation("io.coil-kt:coil-compose:2.6.0")
+    implementation("com.squareup.picasso:picasso:2.71828")
 
     //lifecycle
     implementation("androidx.lifecycle:lifecycle-viewmodel:2.8.0")
@@ -69,6 +70,7 @@ dependencies {
     implementation(libs.androidx.navigation.ui)
     implementation(libs.androidx.room.common.jvm)
     implementation(libs.androidx.room.runtime)
+    implementation(libs.common)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

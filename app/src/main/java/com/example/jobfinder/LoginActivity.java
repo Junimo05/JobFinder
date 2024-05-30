@@ -20,6 +20,7 @@ import com.example.jobfinder.data.model.User;
 import com.example.jobfinder.data.api.ApiInterface;
 import com.example.jobfinder.data.model.LoginUser;
 import com.example.jobfinder.utils.LoginStatus;
+import com.example.jobfinder.view.ForgotPassword;
 import com.example.jobfinder.view.RegisterActivity;
 import com.example.jobfinder.viewmodel.LoginViewModel;
 
@@ -61,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                                 myEdit.putString("user_role", user.getRole());
                                 myEdit.apply();
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                finish();
                             }else{
                                 Toast.makeText(LoginActivity.this, "Đăng Nhập Thất Bại", Toast.LENGTH_SHORT).show();
                             }
@@ -82,6 +84,13 @@ public class LoginActivity extends AppCompatActivity {
         TextView btnRegister = findViewById(R.id.tv_SignUp);
         btnRegister.setOnClickListener(view -> {
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
+        });
+
+        //handle forgot password
+        TextView btnForgotPassword = findViewById(R.id.tv_forgotPassword);
+        btnForgotPassword.setOnClickListener(view -> {
+            Intent intent = new Intent(LoginActivity.this, ForgotPassword.class);
             startActivity(intent);
         });
     }
