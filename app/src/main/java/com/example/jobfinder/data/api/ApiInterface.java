@@ -7,6 +7,7 @@ import com.example.jobfinder.data.model.Application;
 import com.example.jobfinder.data.model.Employee;
 import com.example.jobfinder.data.model.LoginUser;
 import com.example.jobfinder.data.model.User;
+import com.example.jobfinder.model.ApplicationInput;
 import com.example.jobfinder.model.EmployeeInput;
 import com.example.jobfinder.model.EmployerInput;
 
@@ -64,7 +65,7 @@ public interface ApiInterface {
         Call<Application> getApplicationByUserId(@Path("id") String id);
 
         @POST("applications")
-        Call<Application> createApplication(@Body Application application);
+        Call<ApplicationInput> createApplication(@Body ApplicationInput application);
 
         @PATCH("applications/{id}")
         Call<Application> updateApplication(@Path("id") String id, @Body Application application);
