@@ -47,32 +47,28 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <LinearLayout
-                    android:id="@+id/Layout_Search"
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:id="@+id/txt_Search"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:orientation="horizontal">
+                    android:layout_gravity="end"
+                    android:src="@drawable/search_icon"/>
+<!--                    <EditText-->
+<!--                        android:id="@+id/txt_Search"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:background="@drawable/search_background"-->
+<!--                        android:drawableStart="@drawable/search_icon"-->
+<!--                        android:drawableEnd="@drawable/black_settings"-->
+<!--                        android:drawablePadding="16dp"-->
+<!--                        android:ems="10"-->
+<!--                        android:hint="@string/search_job"-->
+<!--                        android:inputType="text"-->
+<!--                        android:padding="16dp"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textColorHint="@color/black"-->
+<!--                        android:visibility="visible" />-->
 
-                    <EditText
-                        android:id="@+id/txt_Search"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/search_background"
-                        android:drawableStart="@drawable/search_icon"
-                        android:drawableEnd="@drawable/black_settings"
-                        android:drawablePadding="16dp"
-                        android:ems="10"
-                        android:hint="@string/search_job"
-                        android:inputType="text"
-                        android:padding="16dp"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black"
-                        android:visibility="visible" />
-
-                </LinearLayout>
 
             </LinearLayout>
 

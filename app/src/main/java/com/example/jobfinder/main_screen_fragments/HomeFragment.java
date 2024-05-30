@@ -71,6 +71,14 @@ public class HomeFragment extends Fragment implements LifecycleObserver {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        binding.txtSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("txtSearchClicked:", "true");
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //Categories Click
             int[] categories = new int[]{R.id.First_CV_LL, R.id.Second_CV_LL, R.id.Third_CV_LL, R.id.Fourth_CV_LL};
@@ -151,6 +159,7 @@ public class HomeFragment extends Fragment implements LifecycleObserver {
         preparePostData();
         prepareCategories();
     }
+  
     @Override
     public void onDestroyView() {
         super.onDestroyView();
