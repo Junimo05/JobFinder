@@ -10,15 +10,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jobfinder.R;
 import com.example.jobfinder.data.model.Job;
+import com.example.jobfinder.data.model.JobGroup;
 
 import java.util.ArrayList;
 
-public class CategoryListJobAdapter extends RecyclerView.Adapter<CategoryListJobAdapter.MyViewHolder>{
+public class PopularSeeAllAdapter extends RecyclerView.Adapter<PopularSeeAllAdapter.MyViewHolder>{
 
     private final MyClickListener myClickListener;
+
     private ArrayList<Job> jobs;
 
-    public CategoryListJobAdapter(ArrayList<Job> jobs, MyClickListener myClickListener) {
+    public PopularSeeAllAdapter(ArrayList<Job> jobs, MyClickListener myClickListener) {
         this.jobs = jobs;
         this.myClickListener = myClickListener;
     }
@@ -31,7 +33,7 @@ public class CategoryListJobAdapter extends RecyclerView.Adapter<CategoryListJob
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryListJobAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Job job = jobs.get(position);
         holder.JobTitle.setText(job.getJobTitle());
         holder.Location.setText(job.getLocation());
@@ -39,12 +41,7 @@ public class CategoryListJobAdapter extends RecyclerView.Adapter<CategoryListJob
 
     @Override
     public int getItemCount() {
-
-        if(jobs != null && jobs.size() > 0) {
-            return jobs.size();
-        }
-        else
-            return 0;
+        return jobs.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -69,3 +66,4 @@ public class CategoryListJobAdapter extends RecyclerView.Adapter<CategoryListJob
         void onItemHold(int position);
     }
 }
+

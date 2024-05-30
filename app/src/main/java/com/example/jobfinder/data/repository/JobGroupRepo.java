@@ -25,7 +25,7 @@ private final String TAG = getClass().getSimpleName();
         apiService.getJobGroups().enqueue(new Callback<List<JobGroup>>() {
             @Override
             public void onResponse(Call<List<JobGroup>> call, Response<List<JobGroup>> response) {
-                Log.e(TAG, "getListJobGroup response="+response );
+//                Log.e(TAG, "getListJobGroup response="+response );
                 if (response.isSuccessful() && response.body()!=null ) {
                     Log.e(TAG, "requestListJobGroup response.size="+response.body().size() );
                     mutableLiveData.setValue(response.body());
@@ -34,7 +34,7 @@ private final String TAG = getClass().getSimpleName();
 
             @Override
             public void onFailure(Call<List<JobGroup>> call, Throwable t) {
-                Log.e(TAG, "requestListJobGroup onFailure" + call.toString());
+//                Log.e(TAG, "requestListJobGroup onFailure" + call.toString());
             }
 
         });

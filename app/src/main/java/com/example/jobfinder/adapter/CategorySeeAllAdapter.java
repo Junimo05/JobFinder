@@ -9,50 +9,46 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jobfinder.R;
-import com.example.jobfinder.data.model.Job;
+import com.example.jobfinder.data.model.JobGroup;
 
 import java.util.ArrayList;
 
-public class CategoryListJobAdapter extends RecyclerView.Adapter<CategoryListJobAdapter.MyViewHolder>{
+public class CategorySeeAllAdapter extends RecyclerView.Adapter<CategorySeeAllAdapter.MyViewHolder>{
 
     private final MyClickListener myClickListener;
-    private ArrayList<Job> jobs;
 
-    public CategoryListJobAdapter(ArrayList<Job> jobs, MyClickListener myClickListener) {
-        this.jobs = jobs;
+    private ArrayList<JobGroup> jobGroups;
+
+    public CategorySeeAllAdapter(ArrayList<JobGroup> jobGroups, MyClickListener myClickListener) {
+        this.jobGroups = jobGroups;
         this.myClickListener = myClickListener;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sample_job_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sample_item_category, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryListJobAdapter.MyViewHolder holder, int position) {
-        Job job = jobs.get(position);
-        holder.JobTitle.setText(job.getJobTitle());
-        holder.Location.setText(job.getLocation());
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        JobGroup jobGroup = jobGroups.get(position);
+        holder.JobGroupTitle.setText(jobGroup.getJobGroupTitle());
+        holder.JobCount.setText(jobGroup.getJobCount() + " Jobs");
     }
 
     @Override
     public int getItemCount() {
-
-        if(jobs != null && jobs.size() > 0) {
-            return jobs.size();
-        }
-        else
-            return 0;
+        return jobGroups.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView JobTitle, Location;
+        TextView JobGroupTitle, JobCount;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            JobTitle = itemView.findViewById(R.id.tvJobTitle);
-            Location = itemView.findViewById(R.id.tvJobLocation);
+            JobGroupTitle = itemView.findViewById(R.id.categoryName);
+            JobCount = itemView.findViewById(R.id.categoryJobs);
             itemView.setOnClickListener(v -> {
                 myClickListener.onItemClick(getAdapterPosition());
             });
