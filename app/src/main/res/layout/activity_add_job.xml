@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="8dp">
+    <ImageView
+        android:id="@+id/cj_Back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@mipmap/search_back_foreground"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:id="@+id/cj_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Đăng bài tuyển dụng"
+        android:textColor="#7E8EF1"
+        android:textStyle="bold"
+        android:textSize="28sp"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:id="@+id/cj_position"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vị trí công việc:"
+        android:textAppearance="@style/TitleText"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/cj_title"/>
+    <EditText
+        android:id="@+id/cj_positionValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textAppearance="@style/DisabledBoldText"
+        app:layout_constraintTop_toBottomOf="@id/cj_position" />
+    <TextView
+        android:id="@+id/cj_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Địa điểm công ty"
+        android:textAppearance="@style/TitleText"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/cj_positionValue"/>
+    <EditText
+        android:id="@+id/cj_locationValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textAppearance="@style/DisabledBoldText"
+        app:layout_constraintTop_toBottomOf="@id/cj_location"/>
+    <TextView
+        android:id="@+id/cj_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nội dung công việc"
+        android:textAppearance="@style/TitleText"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/cj_locationValue"/>
+    <EditText
+        android:id="@+id/cj_descriptionValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textAppearance="@style/DisabledBoldText"
+        app:layout_constraintTop_toBottomOf="@id/cj_description"/>
+    <TextView
+        android:id="@+id/cj_requirement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Yêu cầu:"
+        android:textAppearance="@style/TitleText"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/cj_descriptionValue"/>
+    <EditText
+        android:id="@+id/cj_requirementValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textAppearance="@style/DisabledBoldText"
+        app:layout_constraintTop_toBottomOf="@id/cj_requirement"/>
+    <TextView
+        android:id="@+id/cj_persons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Số lượng người:"
+        android:textAppearance="@style/TitleText"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/cj_requirementValue"/>
+    <EditText
+        android:id="@+id/cj_personsValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textAppearance="@style/DisabledBoldText"
+        app:layout_constraintTop_toBottomOf="@id/cj_persons"/>
+    <TextView
+        android:id="@+id/cj_salaryRange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mức lương:"
+        android:textAppearance="@style/TitleText"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/cj_personsValue"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cj_minMax"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:layout_constraintTop_toBottomOf="@id/cj_salaryRange">
+        <TextView
+            android:id="@+id/cj_minSalary"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:text="Mức lương tối thiểu:"
+            android:textSize="16sp"
+            android:textAppearance="@style/DisabledBoldText"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+        <EditText
+            android:id="@+id/cj_minSalaryValue"
+            android:layout_width="128dp"
+            android:layout_height="40dp"
+            android:hint="....."
+            android:textSize="16sp"
+            android:layout_marginLeft="16dp"
+            android:textAppearance="@style/DisabledBoldText"
+            app:layout_constraintLeft_toRightOf="@id/cj_minSalary"/>
+        <TextView
+            android:id="@+id/cj_maxSalary"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:text="Mức lương tối đa:"
+            android:textSize="16sp"
+            android:textAppearance="@style/DisabledBoldText"
+            app:layout_constraintTop_toBottomOf="@id/cj_minSalary"/>
+        <EditText
+            android:id="@+id/cj_maxSalaryValue"
+            android:layout_width="128dp"
+            android:layout_height="40dp"
+            android:hint="....."
+            android:textSize="16sp"
+            android:layout_marginLeft="16dp"
+            android:textAppearance="@style/DisabledBoldText"
+            app:layout_constraintTop_toBottomOf="@id/cj_minSalaryValue"
+            app:layout_constraintLeft_toRightOf="@id/cj_maxSalary"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/cv_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đăng"
+        android:backgroundTint="#7E8EF1"
+        android:textColor="#F8F4E1"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/cj_minMax"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

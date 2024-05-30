@@ -6,7 +6,12 @@
     <style name="MyTextViewStyle" parent="">
         <item name="android:textSize">16sp</item>
     </style>
+    <style name="TitleText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
     <style name="DisabledBoldText">
         <item name="android:textStyle">bold</item>
-        <item name="android:alpha">0.8</item>  </style>
+        <item name="android:alpha">0.1</item>
+    </style>
 </resources>
